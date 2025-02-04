@@ -98,7 +98,7 @@ exts = cythonize([build_extension_from_pyx('vlsift/sift/cysift.pyx')], quiet=Tru
 
 setup(
     name='vlsift',
-    version="0.1.1",
+    version="0.1.2",
     cmdclass={"build_ext": build_ext},
     description='Cython wrapper of the VLFeat toolkit',
     ext_modules=exts,
