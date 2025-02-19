@@ -68,11 +68,15 @@ def build_extension_from_pyx(pyx_path):
     if IS_LINUX or IS_OSX:
         ext.extra_compile_args.append('-Wno-unused-function')
         ext.extra_compile_args.append('-pthread')
+    if IS_LINUX:
         ext.extra_compile_args.append('-lgomp')
         ext.extra_compile_args.append('-msse2')
         ext.extra_compile_args.append('-mavx')
     if IS_OSX:
         ext.extra_link_args.append('-headerpad_max_install_names')
+        ext.extra_compile_args.append('-DVL_BUILD_DLL')
+        ext.extra_compile_args.append('-DVL_DISABLE_SSE2')
+        ext.extra_compile_args.append('-DVL_DISABLE_AVX')
     if IS_WIN:
         ext.extra_compile_args.append('/DVL_BUILD_DLL')
         ext.extra_compile_args.append('/DVL_DISABLE_SSE2')
